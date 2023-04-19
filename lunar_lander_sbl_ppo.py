@@ -3,11 +3,12 @@ import gym
 from stable_baselines3 import PPO
 from stable_baselines3.common.evaluation import evaluate_policy
 
-import numpy as np
 import imageio
+import matplotlib.pyplot as plt 
+import numpy as np
 
 
-train = True
+train = False
 
 
 # Create environment
@@ -27,9 +28,14 @@ model = PPO.load("ppo_lunar_wind", env=env)
 
 # Evaluate the agent
 mean_reward, std_reward = evaluate_policy(model, model.get_env(), n_eval_episodes=10)
-
 print(f"mean reward: {mean_reward}")
 print(f"std dev reward: {std_reward}")
+bar_x = [1]
+bar_y = [mean_reward]
+bar_err = [std_reward]
+plt.bar(bar_x, bar_y)
+plt.errorbar(bar_x, bar_y, yerr=bar_err, fmt='o', color='r')
+plt.savefig("ppo_lunar_wind.png")
 
 # Enjoy trained agent
 env_disp = gym.make("LunarLander-v2", enable_wind=True, render_mode='rgb_array')
@@ -42,4 +48,5 @@ for i in range(1000):
     action, _states = model.predict(obs, deterministic=True)
     obs, rewards, dones, info = vec_env.step(action)
     frames.append(vec_env.render())
-imageio.mimsave("ppo_lunar_wind.gif", [np.array(img) for i, img in enumerate(frames) if i%2 == 0], fps=29)
+imageio.mimsave("ppo_lunar_wind.gif",
+                [np.array(img) for i, img in enumerate(frames) if i%2 == 0], fps=29)
