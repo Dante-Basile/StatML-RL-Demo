@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-train = False
+train = True
 
 
 # Create environment
@@ -21,17 +21,17 @@ if train:
     model_calm_wind = PPO("MlpPolicy", env_calm, verbose=1)
     # Train the agent and display a progress bar
     print("Training calm_wind on calm")
-    model_calm_wind.learn(total_timesteps=int(2e5), progress_bar=True)
+    model_calm_wind.learn(total_timesteps=int(1e5), progress_bar=True)
     model_calm_wind.set_env(env_wind)
     print("Training calm_wind on wind")
-    model_calm_wind.learn(total_timesteps=int(2e5), progress_bar=True)
+    model_calm_wind.learn(total_timesteps=int(1e5), progress_bar=True)
 
     model_wind_calm = PPO("MlpPolicy", env_wind, verbose=1)
     print("Training wind_calm on wind")
-    model_wind_calm.learn(total_timesteps=int(2e5), progress_bar=True)
+    model_wind_calm.learn(total_timesteps=int(1e5), progress_bar=True)
     model_wind_calm.set_env(env_calm)
     print("Training wind_calm on calm")
-    model_wind_calm.learn(total_timesteps=int(2e5), progress_bar=True)
+    model_wind_calm.learn(total_timesteps=int(1e5), progress_bar=True)
 
     # Save the agent
     model_calm_wind.save("ppo_lunar_primacy_calm_wind")
