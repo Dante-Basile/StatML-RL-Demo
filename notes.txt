@@ -1,0 +1,10 @@
+pip install stable_baselines3
+    need bleeding edge: pip install git+https://github.com/DLR-RM/stable-baselines3
+pip install shimmy
+pip install swig
+apt install build-essential
+pip install gym[box2d]
+pip install matplotlib
+pip install imageio
+
+others conda forge
