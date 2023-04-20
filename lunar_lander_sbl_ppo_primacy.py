@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-train = True
+train = False
 ver = "2"
 
 
