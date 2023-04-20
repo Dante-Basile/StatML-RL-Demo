@@ -9,8 +9,8 @@ import numpy as np
 
 
 train = False
-test = False
-animate = True
+test = True
+animate = False
 ver = "2"
 
 
@@ -74,6 +74,9 @@ if test:
     plt.bar(bar_x_wind_calm, bar_y_wind_calm, color='g')
     plt.errorbar(bar_x_calm_wind, bar_y_calm_wind, yerr=bar_err_calm_wind, fmt='o', color='r')
     plt.errorbar(bar_x_wind_calm, bar_y_wind_calm, yerr=bar_err_wind_calm, fmt='o', color='r')
+    ylim_max = max(mean_reward_calm_wind+std_reward_calm_wind,
+                   mean_reward_wind_calm+std_reward_wind_calm)
+    plt.ylim(top=1.4*ylim_max)
     plt.legend(["calm->wind", "wind->calm"])
     plt.xticks([])
     plt.title("Agent Reward Comparison")
