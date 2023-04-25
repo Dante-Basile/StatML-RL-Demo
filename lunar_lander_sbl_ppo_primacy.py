@@ -89,7 +89,7 @@ if test:
     ylim_max = max(mean_reward_calm_wind+std_reward_calm_wind,
                    mean_reward_wind_calm+std_reward_wind_calm)
     plt.ylim(top=1.4*ylim_max)
-    plt.legend(["calm->wind", "wind->calm"])
+    plt.legend(["calm-first", "wind-first"])
     plt.xticks([])
     plt.title("Agent Reward Comparison")
     plt.ylabel("reward")
