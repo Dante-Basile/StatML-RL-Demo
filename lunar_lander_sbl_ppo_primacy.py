@@ -58,8 +58,8 @@ if test:
     print(std_reward_calm_wind_str)
     res_fname = "ppo_lunar_primacy_results" + "_" + ver + ".txt"
     with open(res_fname, 'w') as f:
-        f.write(mean_reward_calm_wind+'\n')
-        f.write(std_reward_calm_wind+'\n')
+        f.write(f"mean reward calm_wind: {mean_reward_calm_wind}\n")
+        f.write(f"std dev reward calm_wind: {std_reward_calm_wind}\n")
 
     mean_reward_wind_calm, std_reward_wind_calm = evaluate_policy(model_wind_calm,
                                             model_wind_calm.get_env(),
@@ -71,8 +71,8 @@ if test:
     print(std_reward_wind_calm_str)
     res_fname = "ppo_lunar_primacy_results" + "_" + ver + ".txt"
     with open(res_fname, 'a') as f:
-        f.write(mean_reward_wind_calm+'\n')
-        f.write(std_reward_wind_calm+'\n')
+        f.write(f"mean reward wind_calm: {mean_reward_wind_calm}\n")
+        f.write(f"std dev reward wind_calm: {std_reward_wind_calm}\n")
     del model_calm_wind
     del model_wind_calm
 

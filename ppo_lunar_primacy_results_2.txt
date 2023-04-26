@@ -1,0 +1,4 @@
+mean reward calm_wind: 93.22786234000002
+std dev reward calm_wind: 145.5857577870384
+mean reward wind_calm: 139.49923897
+std dev reward wind_calm: 131.45736990795672
