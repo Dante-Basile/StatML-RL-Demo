@@ -11,7 +11,7 @@ import numpy as np
 train = False
 test = True
 animate = False
-ver = "2"
+ver = "1"
 
 
 # Create environment
